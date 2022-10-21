@@ -63,4 +63,7 @@ $route['admin_logout'] = 'Admin/C_Admin/logout';
 $route['admin_home'] = 'Admin/C_Admin/home';
 $route['daftar_isi'] = 'Admin/C_Admin/daftar_isi';
 $route['add_daftar_isi'] = 'Admin/C_Admin/add_daftar_isi';
+$route['add_daftar_isi'] = 'Admin/C_Admin/add_daftar_isi';
 
+$route['materi'] = 'Admin/C_Admin/materi';
+$route['add_materi'] = 'Admin/C_Admin/add_materi';

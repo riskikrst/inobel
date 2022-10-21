@@ -144,4 +144,21 @@ class C_Admin extends CI_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
+    public function materi()
+	{
+        $data['home'] = $this->M_Opening->opening()->row_array();
+        $data['daftar_isi'] = $this->M_Admin->show_bab()->result_array();
+
+		$this->load->view('Admin/Materi', $data);
+	}
+
+    public function add_materi()
+    {
+        $id_bab = $this->input->post('id_bab');
+        $nama   = $this->input->post('nama');
+
+        $this->M_Admin->add_materi($id_bab,$nama);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
 }

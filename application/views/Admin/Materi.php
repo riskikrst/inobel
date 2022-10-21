@@ -31,6 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/backend/assets/css/style.css') ?>" rel="stylesheet">
+  <link href="<?= base_url('assets/backend/dataTables.min.css') ?>" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -83,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <ul class="sidebar-nav" id="sidebar-nav">
       <!-- Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link active" href="<?= site_url('admin_home') ?>">
+        <a class="nav-link collapsed" href="<?= site_url('admin_home') ?>">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -101,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <!-- Materi -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('materi') ?>">
+        <a class="nav-link active" href="<?= site_url('materi') ?>">
           <i class="bi bi-grid"></i>
           <span>Materi</span>
         </a>
@@ -122,11 +123,81 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">
-                <?= $home['salam'] ?>
-                <?= $home['nama_apk'] ?>
-                <?= $home['nama_sekolah'] ?>
-              </h5>
+              <div><br/>
+                <span class="card-title h5">
+                  Daftar Materi
+                </span>
+
+                <a class="btn btn-sm btn-outline-primary float-end" data-bs-toggle="modal" data-bs-target="#ModalAdd">
+                  <i class='bx bx-plus-circle'></i> Tambah Materi
+                </a>
+              </div><br/><br/>
+
+              <!-- <div class="float-end"> -->
+              
+              <!-- </div> -->
+
+              <table id="Tb_daftarisi" class="table display">
+                <thead>
+                  <tr>
+                    <th width="5%" class="text-center">No.</th>
+                    <th width="45%" class="text-center">Nama Materi</th>
+                    <th width="35%" class="text-center">Bab</th>
+                    <th width="15%" class="text-center">Opsi</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary">
+                        <i class="bx bx-edit-alt bx-sm"></i>
+                      </button>
+
+                      <button class="btn btn-sm btn-outline-primary">
+                        <i class="bx bx-detail bx-sm"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <!-- KUMPULAN MODAL -->
+          <div class="modal fade" id="ModalAdd" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h5 class="modal-title font-weight-bold">Tambah Daftar Isi</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <?php echo form_open_multipart('add_materi')?>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <span class="font-weight-bold text-primary px-1">Judul Bab</span>
+                      <input class="form-control form-control-sm" name="judul" type="text" autocomplete="off">
+                    </div>
+
+                    <div class="col-lg-6">
+                      <span class="font-weight-bold text-primary px-1">Gambar Bab</span>
+                      <input class="form-control form-control-sm" name="gambar" type="file" autocomplete="off">
+                    </div>
+
+                  </div><br/>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+                <?php echo form_close() ?>
+
+              </div>
             </div>
           </div>
 
@@ -137,23 +208,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </section>
 
   </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <!-- <footer id="footer" class="footer"> -->
-    <!-- <div class="copyright"> -->
-      <!-- &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved -->
-    <!-- </div> -->
-    <!-- <div class="credits"> -->
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-    <!-- </div> -->
-  <!-- </footer> -->
-  <!-- End Footer -->
-
-  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
 
   <!-- Vendor JS Files -->
   <script src="<?= base_url('assets/backend/assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
@@ -166,8 +220,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?= base_url('assets/backend/assets/vendor/php-email-form/validate.js') ?>"></script>
 
   <!-- Template Main JS File -->
+  <script type="text/javascript" src="<?= base_url('assets/backend/jquery-351.js') ?>"></script>
   <script src="<?= base_url('assets/backend/assets/js/main.js') ?>"></script>
-  <script src="<?= base_url('assets/backend/dataTables.min.js') ?>"></script>
+  <script type="text/javascript" src="<?= base_url('assets/backend/dataTables.min.js') ?>"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#Tb_daftarisi').DataTable();
+  });
+  </script>
 
 </body>
 

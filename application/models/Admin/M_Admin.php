@@ -38,4 +38,11 @@ class M_Admin extends CI_Model {
         $this->db->insert('tb_bab');
     }
 
+    public function add_materi($id_bab,$nama)
+    {
+        $this->db->set('id_bab', $id_bab);
+        $this->db->set('nama', $nama);
+        $this->db->insert('tb_materi');
+    }
+
 }
