@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?= site_url('daftar_isi') ?>">
           <i class="bi bi-grid"></i>
-          <span>Daftar Isi</span>
+          <span>Bab</span>
         </a>
       </li>
       <!-- End Daftar isi -->
@@ -108,6 +108,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </a>
       </li>
       <!-- End Materi -->
+
+      <!-- Isi Materi -->
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= site_url('isi_materi') ?>">
+          <i class="bi bi-grid"></i>
+          <span>Isi Materi</span>
+        </a>
+      </li> -->
+      <!-- End Isi Materi -->
 
     </ul>
 
@@ -148,20 +157,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </thead>
 
                 <tbody>
+                  <?php $no=1; foreach($materi as $m) { ?>
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?= $no++ ?></td>
+                    <td><?= $m['nama'] ?></td>
+                    <td><?= $m['judul'] ?></td>
                     <td>
-                      <button class="btn btn-sm btn-outline-primary">
+                      <a class="btn btn-sm btn-outline-primary" href="<?= site_url('v_materi/'.$m['id']) ?>">
                         <i class="bx bx-edit-alt bx-sm"></i>
-                      </button>
+                      </a>
 
-                      <button class="btn btn-sm btn-outline-primary">
-                        <i class="bx bx-detail bx-sm"></i>
-                      </button>
+                      <a class="btn btn-sm btn-outline-primary" href="<?= site_url('isi_materi/'.$m['id']) ?>">
+                        <i class="bx bx-plus-circle bx-sm"></i>
+                      </a>
+
                     </td>
                   </tr>
+                  <?php } ?>
 
                 </tbody>
               </table>
@@ -175,20 +187,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="modal-content">
 
                 <div class="modal-header">
-                  <h5 class="modal-title font-weight-bold">Tambah Daftar Isi</h5>
+                  <h5 class="modal-title font-weight-bold">Tambah Materi</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <?php echo form_open_multipart('add_materi')?>
                 <div class="modal-body">
                   <div class="row">
                     <div class="col-lg-6">
-                      <span class="font-weight-bold text-primary px-1">Judul Bab</span>
-                      <input class="form-control form-control-sm" name="judul" type="text" autocomplete="off">
+                      <span class="font-weight-bold text-primary px-1">Bab</span>
+                      <select class="form-select form-select-sm" name="id_bab">
+                        <option value="">Pilih Bab</option>
+                        <?php foreach($daftar_isi as $di) { ?>
+                        <option value="<?= $di['id'] ?>"><?= $di['judul'] ?></option>
+                        <?php } ?>
+                      </select>
                     </div>
 
                     <div class="col-lg-6">
-                      <span class="font-weight-bold text-primary px-1">Gambar Bab</span>
-                      <input class="form-control form-control-sm" name="gambar" type="file" autocomplete="off">
+                      <span class="font-weight-bold text-primary px-1">Nama Materi</span>
+                      <input class="form-control form-control-sm" name="nama" type="text" autocomplete="off" required>
                     </div>
 
                   </div><br/>
