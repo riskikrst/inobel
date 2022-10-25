@@ -67,3 +67,9 @@ $route['add_daftar_isi'] = 'Admin/C_Admin/add_daftar_isi';
 
 $route['materi'] = 'Admin/C_Admin/materi';
 $route['add_materi'] = 'Admin/C_Admin/add_materi';
+$route['isi_materi/(:any)'] = 'Admin/C_Admin/isi_materi/$1';
+$route['add_isi_materi/(:any)'] = 'Admin/C_Admin/add_isi_materi/$1';
+
+$route['v_materi/(:any)'] = 'Admin/C_Admin/edit_materi/$1';
+
+// $route['method/(:any)/(:any)'] = 'controller/method/$1/$2';

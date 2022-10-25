@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <li class="nav-item">
         <a class="nav-link active" href="<?= site_url('daftar_isi') ?>">
           <i class="bi bi-grid"></i>
-          <span>Daftar Isi</span>
+          <span>Bab</span>
         </a>
       </li>
       <!-- End Daftar isi -->
@@ -108,6 +108,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </a>
       </li>
       <!-- End Materi -->
+
+      <!-- Isi Materi -->
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= site_url('isi_materi') ?>">
+          <i class="bi bi-grid"></i>
+          <span>Isi Materi</span>
+        </a>
+      </li> -->
+      <!-- End Isi Materi -->
 
     </ul>
 

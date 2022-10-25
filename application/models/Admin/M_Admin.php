@@ -45,4 +45,39 @@ class M_Admin extends CI_Model {
         $this->db->insert('tb_materi');
     }
 
+    public function show_materi()
+    {
+        $this->db->select('tb_bab.judul');
+        $this->db->select('tb_materi.id');
+        $this->db->select('tb_materi.nama');
+
+        $this->db->from('tb_materi');
+        $this->db->join('tb_bab','tb_materi.id_bab = tb_bab.id ');
+
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function select_materi($id_materi)
+    {
+        $this->db->select('tb_bab.judul');
+        $this->db->select('tb_materi.id');
+        $this->db->select('tb_materi.nama');
+
+        $this->db->from('tb_materi');
+        $this->db->join('tb_bab','tb_materi.id_bab = tb_bab.id ');
+
+        $this->db->where('tb_materi.id', $id_materi);
+
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function add_isi_materi($isi,$id)
+    {
+        $this->db->set('isi', $isi);
+        $this->db->where('id', $id);
+        $this->db->update('tb_materi');
+    }
+
 }

@@ -148,6 +148,7 @@ class C_Admin extends CI_Controller {
 	{
         $data['home'] = $this->M_Opening->opening()->row_array();
         $data['daftar_isi'] = $this->M_Admin->show_bab()->result_array();
+        $data['materi'] = $this->M_Admin->show_materi()->result_array();
 
 		$this->load->view('Admin/Materi', $data);
 	}
@@ -159,6 +160,40 @@ class C_Admin extends CI_Controller {
 
         $this->M_Admin->add_materi($id_bab,$nama);
         redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function isi_materi($id_materi)
+    {
+        $data['home'] = $this->M_Opening->opening()->row_array();
+        $data['daftar_isi'] = $this->M_Admin->show_bab()->result_array();
+        $data['materi'] = $this->M_Admin->show_materi()->result_array();
+
+        $data['select_materi'] = $this->M_Admin->select_materi($id_materi)->row_array();
+
+        
+
+		$this->load->view('Admin/Materi-isi', $data);
+    }
+
+    public function add_isi_materi($id)
+    {
+        $isi = $this->input->post('isi_materi');
+
+        $this->M_Admin->add_isi_materi($isi,$id);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function edit_materi($id_materi)
+    {
+        $data['home'] = $this->M_Opening->opening()->row_array();
+        $data['daftar_isi'] = $this->M_Admin->show_bab()->result_array();
+        $data['materi'] = $this->M_Admin->show_materi()->result_array();
+
+        $data['select_materi'] = $this->M_Admin->select_materi($id_materi)->row_array();
+
+        
+
+		$this->load->view('Admin/Materi-edit', $data);
     }
 
 }
