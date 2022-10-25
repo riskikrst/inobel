@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Freelancer - Start Bootstrap Theme</title>
+        <title>Inovasi Belajar Pepak Bahasa Jawa</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; Riski Kristiyan</small></div>
+            <div class="container"><small>Copyright &copy; Lilik Sri Wahyuni, S.Pd</small></div>
         </div>
 
         <!-- Portfolio Modals-->
