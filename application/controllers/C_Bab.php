@@ -16,4 +16,11 @@ class C_Bab extends CI_Controller {
 
 		$this->load->view('Home', $data);
 	}
+
+    public function daftar_materi($id_bab)
+	{
+        $data = $this->M_Bab->daftar_materi($id_bab)->result();
+        echo json_encode($data);
+	}
+
 }

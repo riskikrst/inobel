@@ -114,6 +114,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </li>
       <!-- End Materi -->
 
+      <!-- Setting -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= site_url('setting_page') ?>">
+          <i class="bi bi-grid"></i>
+          <span>Setting Halaman</span>
+        </a>
+      </li>
+      <!-- End Setting -->
+
       <!-- Isi Materi -->
       <!-- <li class="nav-item">
         <a class="nav-link active" href="<?= site_url('isi_materi') ?>">
@@ -146,7 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <?= $select_materi['judul'] ?> >
                 </span> <?= $select_materi['nama'] ?><br/><br/>
                 <form id="isi_materi" action="<?= site_url('add_isi_materi/'.$select_materi['id']) ?>" method="post"></form>
-                <textarea form="isi_materi" class="form-control" name="isi_materi" id="summernote"></textarea>
+                <textarea form="isi_materi" class="form-control" name="isi_materi" id="summernote"><?= $select_materi['isi'] ?></textarea>
                 <button type="submit" form="isi_materi" class="btn btn-primary">Simpan</button>
             </div>
           </div>

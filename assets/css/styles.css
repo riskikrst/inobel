@@ -5562,7 +5562,7 @@ textarea.form-control-lg {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1rem;
-  border-bottom: 0.125rem solid #dee2e6;
+  border-bottom: 0.25rem solid #dee2e6;
   border-top-left-radius: 0.625rem;
   border-top-right-radius: 0.625rem;
 }
@@ -11485,15 +11485,15 @@ html {
 .portfolio-modal .btn-close {
   color: #1abc9c;
   font-size: 2rem;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .portfolio-modal .portfolio-modal-title {
-  font-size: 2.25rem;
+  font-size: 1.25rem;
   line-height: 2rem;
 }
 @media (min-width: 992px) {
   .portfolio-modal .portfolio-modal-title {
-    font-size: 3rem;
+    font-size: 1.25rem;
     line-height: 2.5rem;
   }
 }

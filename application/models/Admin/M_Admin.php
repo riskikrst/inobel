@@ -63,6 +63,7 @@ class M_Admin extends CI_Model {
         $this->db->select('tb_bab.judul');
         $this->db->select('tb_materi.id');
         $this->db->select('tb_materi.nama');
+        $this->db->select('tb_materi.isi');
 
         $this->db->from('tb_materi');
         $this->db->join('tb_bab','tb_materi.id_bab = tb_bab.id ');
@@ -78,6 +79,15 @@ class M_Admin extends CI_Model {
         $this->db->set('isi', $isi);
         $this->db->where('id', $id);
         $this->db->update('tb_materi');
+    }
+
+    public function update_page($salam,$nama_apk,$nama_sekolah)
+    {
+        $this->db->set('salam', $salam);
+        $this->db->set('nama_apk', $nama_apk);
+        $this->db->set('nama_sekolah', $nama_sekolah);
+
+        $this->db->update('tb_opening');
     }
 
 }

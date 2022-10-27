@@ -109,6 +109,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </li>
       <!-- End Materi -->
 
+      <!-- Setting -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= site_url('setting_page') ?>">
+          <i class="bi bi-grid"></i>
+          <span>Setting Halaman</span>
+        </a>
+      </li>
+      <!-- End Setting -->
+
       <!-- Isi Materi -->
       <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="<?= site_url('isi_materi') ?>">
@@ -163,9 +172,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?= $m['nama'] ?></td>
                     <td><?= $m['judul'] ?></td>
                     <td>
-                      <a class="btn btn-sm btn-outline-primary" href="<?= site_url('v_materi/'.$m['id']) ?>">
+                      <!-- <a class="btn btn-sm btn-outline-primary" href="<?= site_url('v_materi/'.$m['id']) ?>">
                         <i class="bx bx-edit-alt bx-sm"></i>
-                      </a>
+                      </a> -->
 
                       <a class="btn btn-sm btn-outline-primary" href="<?= site_url('isi_materi/'.$m['id']) ?>">
                         <i class="bx bx-plus-circle bx-sm"></i>

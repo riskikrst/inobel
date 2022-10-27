@@ -108,6 +108,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </li>
       <!-- End Materi -->
 
+      <!-- Setting -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= site_url('setting_page') ?>">
+          <i class="bi bi-grid"></i>
+          <span>Setting Halaman</span>
+        </a>
+      </li>
+      <!-- End Setting -->
+
       <!-- Isi Materi -->
       <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="<?= site_url('isi_materi') ?>">

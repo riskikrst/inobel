@@ -191,9 +191,25 @@ class C_Admin extends CI_Controller {
 
         $data['select_materi'] = $this->M_Admin->select_materi($id_materi)->row_array();
 
-        
-
 		$this->load->view('Admin/Materi-edit', $data);
     }
+
+    public function setting()
+	{
+        $data['home'] = $this->M_Opening->opening()->row_array();
+		$this->load->view('Admin/Setting', $data);
+	}
+
+    public function update_page()
+    {
+        $salam          = $this->input->post('salam');
+        $nama_apk       = $this->input->post('nama_apk');
+        $nama_sekolah   = $this->input->post('nama_sekolah');
+
+        $this->M_Admin->update_page($salam,$nama_apk,$nama_sekolah);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    
 
 }

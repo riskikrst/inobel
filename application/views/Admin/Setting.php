@@ -31,7 +31,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/backend/assets/css/style.css') ?>" rel="stylesheet">
-  <link href="<?= base_url('assets/backend/dataTables.min.css') ?>" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -93,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <!-- Daftar isi -->
       <li class="nav-item">
-        <a class="nav-link active" href="<?= site_url('daftar_isi') ?>">
+        <a class="nav-link collapsed" href="<?= site_url('daftar_isi') ?>">
           <i class="bi bi-grid"></i>
           <span>Bab</span>
         </a>
@@ -111,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <!-- Setting -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('setting_page') ?>">
+        <a class="nav-link active" href="<?= site_url('setting_page') ?>">
           <i class="bi bi-grid"></i>
           <span>Setting Halaman</span>
         </a>
@@ -141,81 +140,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           <div class="card">
             <div class="card-body">
-              <div><br/>
-                <span class="card-title h5">
-                  Daftar Isi
-                </span>
-
-                <a class="btn btn-sm btn-outline-primary float-end" data-bs-toggle="modal" data-bs-target="#ModalAdd">
-                  <i class='bx bx-plus-circle'></i> Tambah Daftar Isi
-                </a>
-              </div><br/><br/>
-
-              <!-- <div class="float-end"> -->
-              
-              <!-- </div> -->
-
-              <table id="Tb_daftarisi" class="table display">
-                <thead>
-                  <tr>
-                    <th width="5%" class="text-center">No.</th>
-                    <th width="50%" class="text-center">Judul Bab</th>
-                    <th class="text-center">Gambar</th>
-                    <th width="5%" class="text-center">Opsi</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <?php $no=1; foreach($daftar_isi as $di) { ?>
-                  <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $di['judul'] ?></td>
-                    <td class="text-center">
-                      <img src="<?= base_url('assets/image/image-bab/'.$di['gambar']) ?>" style="width:100px; height:auto;">
-                    </td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-primary">
-                        <i class="bx bx-edit-alt bx-sm"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <?php } ?>
-
-                </tbody>
-              </table>
+              <h5 class="card-title">
+                <?= $home['salam'] ?>
+                <?= $home['nama_apk'] ?>
+                <?= $home['nama_sekolah'] ?>
+              </h5>
             </div>
           </div>
 
+          <div class="card">
+            <div class="card-body">
 
-          <!-- KUMPULAN MODAL -->
-          <div class="modal fade" id="ModalAdd" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-
-                <div class="modal-header">
-                  <h5 class="modal-title font-weight-bold">Tambah Daftar Isi</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <form id="update_page" action="<?= site_url('update_page') ?>" method="post"></form>
+              <div class="row pt-2">
+                <div class="col-lg-12">
+                  <span class="font-weight-bold text-primary px-1">Pesan Pembuka</span>
+                  <input form="update_page" type="text" class="form-control form-control-lg" name="salam" value="<?= $home['salam'] ?>">
+                  <br/>
                 </div>
-                <?php echo form_open_multipart('add_daftar_isi')?>
-                <div class="modal-body">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <span class="font-weight-bold text-primary px-1">Judul Bab</span>
-                      <input class="form-control form-control-sm" name="judul" type="text" autocomplete="off">
-                    </div>
 
-                    <div class="col-lg-6">
-                      <span class="font-weight-bold text-primary px-1">Gambar Bab</span>
-                      <input class="form-control form-control-sm" name="gambar" type="file" autocomplete="off">
-                    </div>
-
-                  </div><br/>
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
+                <div class="col-lg-6">
+                  <span class="font-weight-bold text-primary px-1">Nama Aplikasi</span>
+                  <input form="update_page" type="text" class="form-control form-control-lg" name="nama_apk" value="<?= $home['nama_apk'] ?>">
+                  <br/>
                 </div>
-                <?php echo form_close() ?>
 
+                <div class="col-lg-6">
+                  <span class="font-weight-bold text-primary px-1">Nama Sekolah</span>
+                  <input form="update_page" type="text" class="form-control form-control-lg" name="nama_sekolah" value="<?= $home['nama_sekolah'] ?>">
+                  <br/>
+                </div>
+
+                <div class="col-lg-12">
+                  <button type="submit" form="update_page" class="btn btn-primary float-left">Simpan</button>
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -226,6 +186,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </section>
 
   </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <!-- <footer id="footer" class="footer"> -->
+    <!-- <div class="copyright"> -->
+      <!-- &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved -->
+    <!-- </div> -->
+    <!-- <div class="credits"> -->
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+    <!-- </div> -->
+  <!-- </footer> -->
+  <!-- End Footer -->
+
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
 
   <!-- Vendor JS Files -->
   <script src="<?= base_url('assets/backend/assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
@@ -238,15 +215,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?= base_url('assets/backend/assets/vendor/php-email-form/validate.js') ?>"></script>
 
   <!-- Template Main JS File -->
-  <script type="text/javascript" src="<?= base_url('assets/backend/jquery-351.js') ?>"></script>
   <script src="<?= base_url('assets/backend/assets/js/main.js') ?>"></script>
-  <script type="text/javascript" src="<?= base_url('assets/backend/dataTables.min.js') ?>"></script>
-
-  <script>
-    $(document).ready(function () {
-      $('#Tb_daftarisi').DataTable();
-  });
-  </script>
+  <script src="<?= base_url('assets/backend/dataTables.min.js') ?>"></script>
 
 </body>
 

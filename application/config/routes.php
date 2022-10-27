@@ -55,6 +55,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Home
 $route['home'] = 'C_Bab/index';
+$route['list_materi/(:any)'] = 'C_Bab/daftar_materi/$1';
+
 
 // Admin
 $route['admin'] = 'Admin/C_Admin/index';
@@ -69,7 +71,9 @@ $route['materi'] = 'Admin/C_Admin/materi';
 $route['add_materi'] = 'Admin/C_Admin/add_materi';
 $route['isi_materi/(:any)'] = 'Admin/C_Admin/isi_materi/$1';
 $route['add_isi_materi/(:any)'] = 'Admin/C_Admin/add_isi_materi/$1';
-
 $route['v_materi/(:any)'] = 'Admin/C_Admin/edit_materi/$1';
+
+$route['setting_page'] = 'Admin/C_Admin/setting';
+$route['update_page'] = 'Admin/C_Admin/update_page';
 
 // $route['method/(:any)/(:any)'] = 'controller/method/$1/$2';
