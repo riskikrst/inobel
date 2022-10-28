@@ -38,6 +38,14 @@ class M_Admin extends CI_Model {
         $this->db->insert('tb_bab');
     }
 
+    public function update_bab($judul,$gambar,$id)
+    {
+        $this->db->set('judul', $judul);
+        $this->db->set('gambar', $gambar);
+        $this->db->where('id', $id);
+        $this->db->update('tb_bab');
+    }
+
     public function add_materi($id_bab,$nama)
     {
         $this->db->set('id_bab', $id_bab);
@@ -88,6 +96,35 @@ class M_Admin extends CI_Model {
         $this->db->set('nama_sekolah', $nama_sekolah);
 
         $this->db->update('tb_opening');
+    }
+
+    public function isi_kamus()
+    {
+        $this->db->select('id');
+        $this->db->select('ngoko');
+        $this->db->select('madya');
+        $this->db->select('inggil');
+
+        $this->db->from('tb_kamus');
+        $this->db->order_by('ngoko');
+
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function add_kamus($ngoko,$madya,$inggil)
+    {
+        $this->db->set('ngoko', $ngoko);
+        $this->db->set('madya', $madya);
+        $this->db->set('inggil', $inggil);
+
+        $this->db->insert('tb_kamus');
+    }
+
+    public function delete_kamus($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('tb_kamus');
     }
 
 }

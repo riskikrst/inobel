@@ -28,4 +28,32 @@ class M_Bab extends CI_Model {
         return $query;
     }
 
+    public function detail_materi($id_materi)
+    {
+        $this->db->select('id');
+        $this->db->select('id_bab');
+        $this->db->select('nama');
+        $this->db->select('isi');
+
+        $this->db->from('tb_materi');
+        $this->db->where('id', $id_materi);
+
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function isi_kamus()
+    {
+        $this->db->select('id');
+        $this->db->select('ngoko');
+        $this->db->select('madya');
+        $this->db->select('inggil');
+
+        $this->db->from('tb_kamus');
+        $this->db->order_by('ngoko');
+
+        $query = $this->db->get();
+        return $query;
+    }
+
 }

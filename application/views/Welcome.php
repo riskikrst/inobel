@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
       <h1 class="mb-4 pb-0">
         <?= $home['salam'] ?><br>
-        <span><?= $home['nama_apk'] ?></span>
+        <span>" <?= $home['nama_apk'] ?> "</span>
         </h1>
       <p class="mb-4 pb-0"><?= $home['nama_sekolah'] ?></p>
       <a href="<?= site_url('home') ?>" class="about-btn scrollto">Mulai Sinau</a>

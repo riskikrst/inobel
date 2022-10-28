@@ -23,4 +23,22 @@ class C_Bab extends CI_Controller {
         echo json_encode($data);
 	}
 
+    public function detail_materi($id_materi)
+	{
+        $data['detail_materi'] = $this->M_Bab->detail_materi($id_materi)->row_array();
+
+		$this->load->view('Detail_Materi', $data);
+	}
+
+    public function view_kamus()
+	{
+        $data['kamus'] = $data['kamus'] = $this->M_Bab->isi_kamus()->result_array();
+
+		$this->load->view('Detail_Kamus', $data);
+	}
+
+    
+
+    
+
 }

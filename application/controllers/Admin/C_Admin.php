@@ -144,6 +144,40 @@ class C_Admin extends CI_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
+    public function update_daftar_isi()
+    {
+        $judul = $this->input->post('judul');
+        $id = $this->input->post('id');
+        $jdl_gambar = str_replace(['.','/',' '],'-',$judul);
+        // $gambar
+
+        if($_FILES['gambar']['name']!="") {
+            $config['upload_path']      = '../inobel/assets/image/image-bab';
+            $config['allowed_types']    = 'jpg|png|jpeg|webp|GIF|JPG|PNG|JPEG|WEBP';
+            $config['max_size']         = 10240; //10Mb
+            $config['overwrite']		= true;
+            $config['file_name']        = 'gambar-'.$jdl_gambar;
+            $this->load->library('upload', $config);
+
+            if (!is_dir('../inobel/assets/image/image-bab')) {
+                mkdir('../inobel/assets/image/image-bab', 0777, TRUE);
+            }
+
+            if ( ! $this->upload->do_upload('gambar')) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $upload_data = $this->upload->data();
+                $gambar = $upload_data['file_name'];
+            }
+
+        } else {
+            $gambar = $this->input->post('gambar_old');
+        }
+
+        $this->M_Admin->update_bab($judul,$gambar,$id);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     public function materi()
 	{
         $data['home'] = $this->M_Opening->opening()->row_array();
@@ -210,6 +244,28 @@ class C_Admin extends CI_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
+    // KAMUS
+    public function view_kamus()
+	{
+        $data['kamus'] = $this->M_Admin->isi_kamus()->result_array();
+		$this->load->view('Admin/Kamus', $data);
+	}
+
+    public function add_kamus()
+    {
+        $ngoko  = $this->input->post('ngoko');
+        $madya  = $this->input->post('madya');
+        $inggil = $this->input->post('inggil');
+
+        $this->M_Admin->add_kamus($ngoko,$madya,$inggil);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function delete_kamus($id)
+    {
+        $this->M_Admin->delete_kamus($id);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
     
 
 }

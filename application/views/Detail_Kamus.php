@@ -19,6 +19,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<?= base_url('assets/css/styles.css') ?>" rel="stylesheet" />
         <link href="<?= base_url('assets/backend/assets/vendor/boxicons/css/boxicons.min.css') ?>" rel="stylesheet">
+
+        
+        <link href="<?= base_url('assets/backend/assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
+        <link href="<?= base_url('assets/backend/dataTables.min.css') ?>" rel="stylesheet">
     </head>
     <body id="page-top">
         
@@ -26,50 +30,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
-                <a class="btn btn-primary btn-sm" href="<?= site_url('') ?>">
+                <a class="btn btn-primary btn-sm" href="<?= site_url('home') ?>">
                     <i class="bx bxs-chevrons-left bx-sm"></i><i class="bx bxs-chevrons-left bx-sm"></i>
                 </a>
-
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
-                    <!-- <div class="divider-custom-icon"><i class="fas fa-star"></i></div>  -->
-                    <h5 class="text-center text-uppercase text-secondary mb-0"> Daftar Isi </h5>
-                    <!-- <div class="divider-custom-icon"><i class="fas fa-star"></i></div>  -->
+                    <h5 class="text-center text-uppercase text-secondary mb-0"> Kamus Bahasa Jawa </h5>
                     <div class="divider-custom-line"></div>
                 </div>
                 
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                     <!-- Portfolio Item-->
-                    <?php foreach($list_bab as $lb) { ?>
-                    <div class="col-md-4 col-lg-3 mb-6">
-                        <div class="portfolio-item mx-auto btnShowMateri" id="<?= $lb['id'] ?>">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white">
-                                    <i class="fas fa-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="<?= base_url('assets/image/image-bab/'.$lb['gambar']) ?>" style="max-width: 100%;max-height: 100%;"/>
-                        </div>
-						<div class="text-center fw-bold blockquote text-primary">
-                            <?= $lb['judul'] ?>
-                        </div>
-                    </div>
-                    <?php } ?>
-
-                    <div class="col-md-4 col-lg-3 mb-6">
-                        <div class="portfolio-item mx-auto btnShowKamus">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white">
-                                    <i class="fas fa-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="<?= base_url('assets/image/image-bab/gambar-Kamus.jpg') ?>" style="max-width: 100%;max-height: 100%;"/>
-                        </div>
-						<div class="text-center fw-bold blockquote text-primary">
-                            Kamus
-                        </div>
+                    
+                    <div class="col-md-12 col-lg-12 mb-12">
+                        <table class="table display">
+                            <thead>
+                                <tr>
+                                    <th>Basa Ngoko</th>
+                                    <th>Krama Madya</th>
+                                    <th>Krama Inggil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($kamus as $km) { ?>
+                                <tr>
+                                    <td><?= $km['ngoko'] ?></td>
+                                    <td><?= $km['madya'] ?></td>
+                                    <td><?= $km['inggil'] ?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- Portfolio Item-->
 
@@ -106,44 +99,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="<?= base_url('assets/backend/assets/vendor/simple-datatables/simple-datatables.js') ?>"></script>
 
         <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
-        <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
+        <!-- <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script> -->
+
+        <script type="text/javascript" src="<?= base_url('assets/backend/jquery-351.js') ?>"></script>
+        <script src="<?= base_url('assets/backend/assets/js/main.js') ?>"></script>
+        <script type="text/javascript" src="<?= base_url('assets/backend/dataTables.min.js') ?>"></script>
     </body>
-</html>
-<script>
-$(document).ready(function() {
 
-    $(".btnShowMateri").click(function() {
-        var id = $(this).attr('id');
-
-        $.ajax({
-            url : "<?= site_url('list_materi/') ?>"+id,
-            method : "GET",
-            async : true,
-            dataType : 'json',
-            success : function(data) {
-                var list = '';
-                var i;
-                for(i=0; i<data.length; i++) {
-                    list += '<a class="w-100 font-weight-bold btn btn-primary" href="<?= site_url('view_materi/') ?>'+data[i].id+'">'
-                                +data[i].nama+
-                            '</a><br/><br/>'
-                };
-                $("#DaftarMateri").html(list);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert (xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
+    <script>
+        $(document).ready(function() {
+            $(".table").DataTable({
+                "pageLength": 50,
+                "dom" : "frtip"
+            });
         });
-
-        $("#portfolioModal1").modal('show');
-
-    });
-
-    $(".btnShowKamus").click(function() {
-        window.location.href = "<?= site_url('v_kamus') ?>";
-    });
-
-});
-</script>
+    </script>
+</html>

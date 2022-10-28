@@ -111,6 +111,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <!-- Setting -->
       <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= site_url('kamus') ?>">
+          <i class="bi bi-grid"></i>
+          <span>Kamus</span>
+        </a>
+      </li>
+      <!-- End Setting -->
+
+      <!-- Setting -->
+      <li class="nav-item">
         <a class="nav-link collapsed" href="<?= site_url('setting_page') ?>">
           <i class="bi bi-grid"></i>
           <span>Setting Halaman</span>
@@ -174,7 +183,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <img src="<?= base_url('assets/image/image-bab/'.$di['gambar']) ?>" style="width:100px; height:auto;">
                     </td>
                     <td>
-                      <button class="btn btn-sm btn-outline-primary">
+                      <button class="btn btn-sm btn-outline-primary EditDaftarIsi" id="<?= $di['id'] ?>"
+                        data-judul="<?= $di['judul'] ?>" data-gambar="<?= $di['gambar'] ?>">
                         <i class="bx bx-edit-alt bx-sm"></i>
                       </button>
                     </td>
@@ -207,6 +217,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-lg-6">
                       <span class="font-weight-bold text-primary px-1">Gambar Bab</span>
                       <input class="form-control form-control-sm" name="gambar" type="file" autocomplete="off">
+                    </div>
+
+                  </div><br/>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+                <?php echo form_close() ?>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="ModalEdit" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h5 class="modal-title font-weight-bold">Edit Daftar Isi</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <?php echo form_open_multipart('update_daftar_isi')?>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <span class="font-weight-bold text-primary px-1">Judul Bab</span>
+                      <input class="form-control form-control-sm" id="edit_judul" name="judul" type="text" autocomplete="off">
+                    </div>
+
+                    <div class="col-lg-6">
+                      <span class="font-weight-bold text-primary px-1">Gambar Bab</span>
+                      <input class="form-control form-control-sm" name="gambar" type="file" autocomplete="off">
+                    </div>
+
+                    <div class="col-lg-6">
+                      <input class="form-control form-control-sm" id="edit_gambar_old" name="gambar_old" type="hidden">
+                      <input class="form-control form-control-sm" id="edit_id_materi" name="id" type="hidden">
                     </div>
 
                   </div><br/>
@@ -243,8 +290,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script type="text/javascript" src="<?= base_url('assets/backend/dataTables.min.js') ?>"></script>
 
   <script>
-    $(document).ready(function () {
-      $('#Tb_daftarisi').DataTable();
+  $(document).ready(function () {
+    $('#Tb_daftarisi').DataTable();
+
+    $(".EditDaftarIsi").each(function() {
+        var id = $(this).attr('id');
+
+        $("#"+id).click(function() {
+          var judul = $(this).attr('data-judul');
+          var gambar = $(this).attr('data-gambar');
+
+          $("#edit_judul").val(judul);
+          $("#edit_gambar_old").val(gambar);
+          $("#edit_id_materi").val(id);
+          
+
+          $("#ModalEdit").modal('show');
+
+
+        });
+
+    })
+
   });
   </script>
 

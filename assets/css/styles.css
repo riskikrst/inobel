@@ -11463,9 +11463,13 @@ html {
   cursor: pointer;
   position: relative;
   display: block;
-  max-width: 25rem;
-  border-radius: 0.5rem;
+  max-width: 20rem;
+  max-height: 20rem;
+  /* border: 3px solid #066173; */
+  border-radius: 1rem;
   overflow: hidden;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 .portfolio .portfolio-item .portfolio-item-caption {
   position: absolute;
@@ -11488,7 +11492,7 @@ html {
   padding: 0.5rem;
 }
 .portfolio-modal .portfolio-modal-title {
-  font-size: 1.25rem;
+  font-size: 0.75rem;
   line-height: 2rem;
 }
 @media (min-width: 992px) {

@@ -109,6 +109,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </li>
       <!-- End Materi -->
 
+      <!-- Kamus -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= site_url('kamus') ?>">
+          <i class="bi bi-grid"></i>
+          <span>Kamus</span>
+        </a>
+      </li>
+      <!-- End Kamus -->
+
       <!-- Setting -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?= site_url('setting_page') ?>">

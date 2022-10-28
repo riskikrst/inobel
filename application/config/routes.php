@@ -56,6 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 // Home
 $route['home'] = 'C_Bab/index';
 $route['list_materi/(:any)'] = 'C_Bab/daftar_materi/$1';
+$route['view_materi/(:any)'] = 'C_Bab/detail_materi/$1';
+$route['v_kamus'] = 'C_Bab/view_kamus';
 
 
 // Admin
@@ -65,7 +67,7 @@ $route['admin_logout'] = 'Admin/C_Admin/logout';
 $route['admin_home'] = 'Admin/C_Admin/home';
 $route['daftar_isi'] = 'Admin/C_Admin/daftar_isi';
 $route['add_daftar_isi'] = 'Admin/C_Admin/add_daftar_isi';
-$route['add_daftar_isi'] = 'Admin/C_Admin/add_daftar_isi';
+$route['update_daftar_isi'] = 'Admin/C_Admin/update_daftar_isi';
 
 $route['materi'] = 'Admin/C_Admin/materi';
 $route['add_materi'] = 'Admin/C_Admin/add_materi';
@@ -75,5 +77,9 @@ $route['v_materi/(:any)'] = 'Admin/C_Admin/edit_materi/$1';
 
 $route['setting_page'] = 'Admin/C_Admin/setting';
 $route['update_page'] = 'Admin/C_Admin/update_page';
+
+$route['kamus'] = 'Admin/C_Admin/view_kamus';
+$route['add_kamus'] = 'Admin/C_Admin/add_kamus';
+$route['del_kamus/(:any)'] = 'Admin/C_Admin/delete_kamus/$1';
 
 // $route['method/(:any)/(:any)'] = 'controller/method/$1/$2';
