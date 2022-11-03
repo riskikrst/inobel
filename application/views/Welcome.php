@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- <link href="<?= base_url('assets/opening/assets/img/apple-touch-icon.png') ?>" rel="apple-touch-icon"> -->
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sofia|raleway" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="<?= base_url('assets/opening/assets/vendor/aos/aos.css') ?>" rel="stylesheet">
@@ -42,10 +42,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <section id="hero">
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
       <h1 class="mb-4 pb-0">
-        <?= $home['salam'] ?><br>
-        <span>" <?= $home['nama_apk'] ?> "</span>
-        </h1>
-      <p class="mb-4 pb-0"><?= $home['nama_sekolah'] ?></p>
+        <span class="font-normal"><?= $home['salam'] ?></span><br>
+        <span><?= $home['nama_apk'] ?></span>
+        <br/><br/>
+        <span class="font-normal"><?= $home['nama_sekolah'] ?></span>
+      </h1>
+      <p class="mb-4 pb-0"></p>
       <a href="<?= site_url('home') ?>" class="about-btn scrollto">Mulai Sinau</a>
     </div>
   </section><!-- End Hero Section -->

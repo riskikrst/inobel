@@ -521,10 +521,17 @@ h6 {
 
 #hero h1 {
   color: #fff;
-  font-family: "Raleway", sans-serif;
-  font-size: 56px;
+  font-family: 'Sofia', sans-serif;
+  font-size: 50px;
   font-weight: 600;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+}
+
+span.font-normal {
+  color: #fff !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 50px;
+  font-weight: 600;
 }
 
 #hero h1 span {
